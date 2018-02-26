@@ -1,0 +1,21 @@
+sudo: required
+language: python
+env:
+  - ASSIGNMENT=project1
+install:
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - conda info -a
+  - conda install -c conda-forge opencv scikit-image numpy scipy matplotlib notebook
+  - pip install -q nose2
+  - "curl -H \"Authorization: token ${GH_TOKEN}\" -H 'Accept: application/vnd.github.v3.raw' -O --location \"https://api.github.com/repos/PGE383-HPC/${ASSIGNMENT}/contents/test.py\""
+  - "curl -H \"Authorization: token ${GH_TOKEN}\" -H 'Accept: application/vnd.github.v3.raw' -O --location \"https://api.github.com/repos/PGE383-HPC/${ASSIGNMENT}/contents/lorenz_gold.png\""
+script:
+  - 'if [ ! -f "./${ASSIGNMENT}.py" ]; then
+        jupyter nbconvert --to python ${ASSIGNMENT}.ipynb;
+     fi'
+  - nose2
