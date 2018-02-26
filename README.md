@@ -1,5 +1,7 @@
 # Project 1
 
+[![Build Status](https://travis-ci.com/PGE383-HPC/project1.svg?token=SnMGq692xXXqxzyE6QSj&branch=master)](https://travis-ci.com/PGE383-HPC/project1)
+
 Open the [Project 1 Jupyter Notebook](project1.ipynb) and follow the instructions.
 
 ## Testing
