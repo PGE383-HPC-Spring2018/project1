@@ -44,4 +44,4 @@ def test_plot():
                                                   mode='constant')
     
     ssim = skimage.measure.compare_ssim(skimage.img_as_float(gold_image), test_image_resized, multichannel=True)
-    assert ssim >= 0.8
+    assert ssim >= 0.7
