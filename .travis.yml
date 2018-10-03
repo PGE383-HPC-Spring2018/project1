@@ -10,12 +10,11 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - conda install -c conda-forge opencv scikit-image numpy scipy matplotlib notebook
-  - pip install -q nose2
+  - conda install -c conda-forge opencv scikit-image numpy scipy matplotlib nbconvert ipython
   - "curl -H \"Authorization: token ${GH_TOKEN}\" -H 'Accept: application/vnd.github.v3.raw' -O --location \"https://api.github.com/repos/PGE383-HPC/${ASSIGNMENT}/contents/test.py\""
   - "curl -H \"Authorization: token ${GH_TOKEN}\" -H 'Accept: application/vnd.github.v3.raw' -O --location \"https://api.github.com/repos/PGE383-HPC/${ASSIGNMENT}/contents/lorenz_gold.png\""
 script:
   - 'if [ ! -f "./${ASSIGNMENT}.py" ]; then
         jupyter nbconvert --to python ${ASSIGNMENT}.ipynb;
      fi'
-  - nose2
+  - python test.py
