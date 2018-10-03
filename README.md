@@ -13,5 +13,5 @@ If you would like to check to see if your solution is correct, run the following
 ```
 
 ```bash
->nose2
+>python test.py
 ```
