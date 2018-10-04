@@ -36,7 +36,7 @@ class TestSolution(unittest.TestCase):
     def test_plot(self):
        with warnings.catch_warnings():
            warnings.simplefilter("ignore")
-           p = Lorenz(0,0,0)
+           p = Lorenz(10, 8/3., 14)
            p.plot('lorenz.png')
             
            gold_image = cv2.imread('lorenz_gold.png')
