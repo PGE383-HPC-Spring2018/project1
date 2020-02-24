@@ -1,5 +1,7 @@
-sudo: required
+os: linux
 language: python
+notifications: 
+  email: false
 env:
   - ASSIGNMENT=project1
 install:
@@ -9,12 +11,9 @@ install:
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
-  - conda info -a
-  - conda install -c conda-forge opencv scikit-image numpy scipy matplotlib nbconvert ipython
+  - conda env create -f environment.yml
+  - source $(conda info --root)/etc/profile.d/conda.sh
+  - conda activate $ASSIGNMENT
   - "curl -H \"Authorization: token ${GH_TOKEN}\" -H 'Accept: application/vnd.github.v3.raw' -O --location \"https://api.github.com/repos/PGE383-HPC/${ASSIGNMENT}/contents/test.py\""
-  - "curl -H \"Authorization: token ${GH_TOKEN}\" -H 'Accept: application/vnd.github.v3.raw' -O --location \"https://api.github.com/repos/PGE383-HPC/${ASSIGNMENT}/contents/lorenz_gold.png\""
 script:
-  - 'if [ ! -f "./${ASSIGNMENT}.py" ]; then
-        jupyter nbconvert --to python ${ASSIGNMENT}.ipynb;
-     fi'
   - python test.py
