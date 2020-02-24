@@ -1,13 +1,32 @@
 #!/usr/bin/env python
 
-from project1 import Lorenz
-import numpy as np
+import unittest
+import nbconvert
+import os
+
 import skimage
 import skimage.measure
 import skimage.transform
 import cv2
-import unittest
 import warnings
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
+
+
+with open("project1.ipynb") as f:
+    exporter = nbconvert.PythonExporter()
+    python_file, _ = exporter.from_file(f)
+
+
+with open("project1.py", "w") as f:
+    f.write(python_file)
+
+
+from project1 import Lorenz
 
 class TestSolution(unittest.TestCase):
 
