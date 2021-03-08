@@ -1,6 +1,6 @@
 # Project 1
 
-[![Build Status](https://travis-ci.com/PGE383-HPC/project1.svg?token=SnMGq692xXXqxzyE6QSj&branch=master)](https://travis-ci.com/PGE383-HPC/project1)
+![Project 1](https://github.com/PGE383-HPC/project1/workflows/.github/workflows/main.yml/badge.svg)
 
 Open the [Project 1 Jupyter Notebook](project1.ipynb) and follow the instructions.
 
